@@ -1,0 +1,62 @@
+[project]
+name = "messagecenter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Kevin Wetzels", email = "kevin@roam.be" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "django==6.0rc1",
+    "django-htmx>=1.26.0",
+    "django-stubs>=5.2.7",
+    "httpx>=0.28.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.8,<0.10.0"]
+build-backend = "uv_build"
+
+[project.scripts]
+manage = "messagecenter.manage:main"
+
+[tool.ruff]
+lint.select = [
+    # flake8-bugbear
+    "B",
+    # flake8-comprehensions
+    "C4",
+    # pycodestyle
+    "E",
+    # Pyflakes errors
+    "F",
+    # isort
+    "I",
+    # flake8-simplify
+    "SIM",
+    # flake8-tidy-imports
+    "TID",
+    # pyupgrade
+    "UP",
+    # Pyflakes warnings
+    "W",
+]
+lint.ignore = [
+    # flake8-bugbear opinionated rules
+    "B9",
+    # line-too-long
+    "E501",
+    # suppressible-exception
+    "SIM105",
+    # if-else-block-instead-of-if-exp
+    "SIM108",
+]
+lint.extend-safe-fixes = [
+    # non-pep585-annotation
+    "UP006",
+]
+lint.isort.required-imports = ["from __future__ import annotations"]
+
+[tool.pyproject-fmt]
+max_supported_python = "3.14"
